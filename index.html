@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Mobiscroll</title>
+    <link href="css/mobiscroll.angularjs.min.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    <script>
+        // Ignore this in your implementation
+        window.isMbscDemo = true;
+    </script>
+</head>
+
+<body>
+    <div class="app-page" mobiscroll-form ng-app="demoApp" ng-controller="demoController" style="display:none;">
+        <div id="tab-home" class="app-tab app-tab-active app-tab-home">
+            <div class="app-header">
+                <h1>Home</h1>
+            </div>
+            <label>
+                Date
+                <input mbsc-input ng-model="todoDate" mobiscroll-calendar>
+            </label>
+            <div class="mbsc-divider">Todo List</div>
+            <ul mobiscroll-data="todoData" mobiscroll-listview="todoList" class="app-todo" mbsc-enhance>
+                <li>
+                    <input mbsc-checkbox type="checkbox" ng-model="item.checked">{{item.text}}
+                </li>
+            </ul>
+        </div>
+        <div id="tab-settings" class="app-tab">
+            <div class="app-header">
+                <h1>Settings</h1>
+            </div>
+            <div class="mbsc-form-group">
+                <div class="mbsc-form-group-title">Sound</div>
+                <label>
+                    Ring
+                    <input type="range" data-icon="phone" value="100" mobiscroll-slider ng-model="sound.ring">
+                </label>
+                <label>
+                    Media
+                    <input type="range" data-icon="music" value="60" mobiscroll-slider ng-model="sound.media">
+                </label>
+                <label>
+                    Alarm
+                    <input type="range" data-icon="alarm2" value="80" mobiscroll-slider ng-model="sound.alarm">
+                </label>
+            </div>
+            <div class="mbsc-form-group">
+                <div class="mbsc-form-group-title">Notifications</div>
+                <label>
+                    Enable notifications
+                    <span class="mbsc-desc">Allow notifications on this device</span>
+                    <input id="settings-notify" type="checkbox" data-role="switch" ng-model="notifications.enable"
+                        mobiscroll-switch>
+                </label>
+                <label>
+                    Message
+                    <span class="mbsc-desc">Get notifications when someone sends you a message</span>
+                    <input class="settings-notify" type="checkbox" data-role="switch" ng-model="notifications.message"
+                        mobiscroll-switch ng-disabled="!notifications.enable">
+                </label>
+                <label>
+                    Birthdays
+                    <span class="mbsc-desc">Get notifications about your friends' birthdays</span>
+                    <input class="settings-notify" type="checkbox" data-role="switch" ng-model="notifications.birthdays"
+                        mobiscroll-switch ng-disabled="!notifications.enable">
+                </label>
+                <label>
+                    Tags
+                    <span class="mbsc-desc">Get notifications when you're tagged</span>
+                    <input data-role="switch" class="settings-notify" type="checkbox" ng-model="notifications.tags"
+                        mobiscroll-switch ng-disabled="!notifications.enable">
+                </label>
+            </div>
+            <div class="mbsc-form-group">
+                <div class="mbsc-form-group-title">Security</div>
+                <label>
+                    Set PIN
+                    <input mbsc-input id="settings-pin" ng-model="pin" mobiscroll-numpad="pinSettings" type="password">
+                </label>
+            </div>
+        </div>
+        <div id="tab-profile" class="app-tab">
+            <div class="app-header">
+                <h1>Profile</h1>
+            </div>
+            <div class="mbsc-form-group">
+                <div class="mbsc-form-group-title">Personal Data</div>
+                <label>
+                    First Name
+                    <input mbsc-input value="Angelica">
+                </label>
+                <label>
+                    Last Name
+                    <input mbsc-input value="Geary">
+                </label>
+                <label>
+                    Language
+                    <select id="profile-language" ng-model="language" mobiscroll-select="languageSettings">
+                        <option value="de">Deutsch</option>
+                        <option value="en" selected>English</option>
+                        <option value="es">Espa&#241;ol</option>
+                        <option value="fr">Fran&#231;ais</option>
+                        <option value="it">Italiano</option>
+                    </select>
+                </label>
+                <label>
+                    Birthday
+                    <input mbsc-input id="profile-birthday" ng-model="birthday" mobiscroll-date>
+                </label>
+                <label>
+                    Male
+                    <input mbsc-segmented type="radio" data-role="segmented" name="gender" ng-model="gender"
+                        ng-checked="gender == 'male'" value='male'>
+                </label>
+                <label>
+                    Female
+                    <input mbsc-segmented type="radio" data-role="segmented" name="gender" ng-model="gender"
+                        ng-checked="gender == 'female'" value='female'>
+                </label>
+            </div>
+            <div class="mbsc-form-group">
+                <div class="mbsc-form-group-title">Account</div>
+                <label>
+                    Email
+                    <input mbsc-input type="email" value="angelica.geary@gmail.com">
+                </label>
+                <label>
+                    Password
+                    <input mbsc-input type="password" data-password-toggle="true">
+                </label>
+            </div>
+            <div class="mbsc-padding">
+                <button mbsc-button class="mbsc-btn-block">Save</button>
+            </div>
+        </div>
+        <ul mobiscroll-bottom-nav="menu">
+            <li data-tab="home" data-icon="home" data-selected="true">Home</li>
+            <li data-tab="settings" data-icon="cogs">Settings</li>
+            <li data-tab="profile" data-icon="user4">Profile</li>
+        </ul>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
+    <script src="https://code.angularjs.org/1.6.6/angular-animate.js"></script>
+    <script src="js/mobiscroll.angularjs.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
